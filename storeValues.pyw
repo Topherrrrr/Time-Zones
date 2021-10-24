@@ -10,6 +10,11 @@ def fetchData():
     fullList=c.fetchall()
     return fullList
 
+
+
+
+
+
 def startSQL(title, adTime, time1):
     catString=f"{adTime}{time1}"
     c.execute('''SELECT count(name) FROM sqlite_master WHERE type='table' AND name='timeZoneList' ''')
@@ -18,8 +23,8 @@ def startSQL(title, adTime, time1):
     else:
         print("Table is nonexistent")
         c.execute("""CREATE TABLE timeZoneList (
-                        date blob,
-                        activity text
+                        time blob,
+                        activity text                  
                         )""")
 
     c.execute("INSERT INTO timeZoneList VALUES (:activity, :time)", {'activity': title, 'time': catString})

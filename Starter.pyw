@@ -9,6 +9,7 @@ class timeWidget(object):
         self.timeChanger=int(timeChanger)
         self.description=description
         self.label=label
+        self.negative=False
     #
     # def destroyLabel(self):
     #     self.label.destroy()
@@ -20,7 +21,7 @@ popup2 = tk.Tk()
 
 def openAll():
     print(f"Full List: {storeValues.fetchData()}")
-
+    widgetList.clear()
     for i in storeValues.fetchData():
         popup2 = tk.Tk()
         popup2.geometry("200x100")
@@ -40,8 +41,9 @@ def openAll():
 def updateTime():
     now=datetime.now()
     for i in widgetList:
-        if i.modifier=="-":
+        if i.modifier=="-" and i.negative==False:
             i.timeChanger*=-1
+            i.negative=True
         hours=i.timeChanger
         hoursAdded=timedelta(hours=hours)
         futureTime=datetime.now()+hoursAdded

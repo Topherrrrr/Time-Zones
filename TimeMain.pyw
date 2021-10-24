@@ -9,12 +9,13 @@ root.title('Time Zone App')
 root.geometry("500x300")
 
 class timeWidget(object):
-    def __init__(self, modifier, timeChanger, description, label):
+    def __init__(self, modifier, timeChanger, description, label, tkRoot):
         self.modifier=modifier
         self.timeChanger=int(timeChanger)
         self.description=description
         self.label=label
         self.negative=False
+        self.tkRoot=tkRoot
 
     #
     # def destroyLabel(self):
@@ -44,7 +45,7 @@ def getFields():
     symbol = adTime
     label2 = tk.Label(popup2, text=f" Time zone for {description}")
     label2.place(x=0, y=0)
-    newTimeWidget = timeWidget(symbol, timeModifier, description, label2)
+    newTimeWidget = timeWidget(symbol, timeModifier, description, label2, popup2)
     widgetList.append(newTimeWidget)
     updateTime()
 
@@ -66,18 +67,19 @@ def updateTime():
     root.after(1000,updateTime)
 
 def openAll():
-    print(f"Full List: {storeValues.fetchData()}")
     widgetList.clear()
+    print(f"Full List: {storeValues.fetchData()}")
+
     for i in storeValues.fetchData():
         popup2=tk.Tk()
-        popup2.geometry("200x100")
-        popup2.wm_title("Filler1")
+        popup2.geometry(f"200x100")
+        popup2.wm_title("Time Zone")
         description=i[0]
         timeModifier=i[1][1]
         symbol=i[1][0]
         label2=tk.Label(popup2, text=f"{i[1]}: Time zone for {i[0]}")
         label2.place(x=0, y=0)
-        newTimeWidget=timeWidget(symbol, timeModifier, description,label2)
+        newTimeWidget=timeWidget(symbol, timeModifier, description,label2, popup2)
 
         widgetList.append(newTimeWidget)
         # pool = mp.Pool()
