@@ -10,11 +10,6 @@ def fetchData():
     fullList=c.fetchall()
     return fullList
 
-
-
-
-
-
 def startSQL(title, adTime, time1):
     catString=f"{adTime}{time1}"
     c.execute('''SELECT count(name) FROM sqlite_master WHERE type='table' AND name='timeZoneList' ''')
