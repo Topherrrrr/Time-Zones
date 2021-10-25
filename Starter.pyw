@@ -4,13 +4,13 @@ import storeValues
 import tkinter as tk
 
 class timeWidget(object):
-    def __init__(self, modifier, timeChanger, description, label):
+    def __init__(self, modifier, timeChanger, description, label, tkRoot):
         self.modifier=modifier
         self.timeChanger=int(timeChanger)
         self.description=description
         self.label=label
         self.negative=False
-
+        self.tkRoot=tkRoot
 
 widgetList=[]
 
@@ -76,7 +76,7 @@ def updateTime():
         i.label.config(text=f"{hours}:{mins}\t{i.description}")
 
     #Setting this function to run every second
-    root.after(1000,updateTime)
+    popup2.after(1000,updateTime)
 
 openAll()
 popup2.withdraw()
