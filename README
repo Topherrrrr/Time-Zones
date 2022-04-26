@@ -1,1 +1,3 @@
 This is used to conveniently show what time it is in other regions of the world. Handy for scheduling meetings or calls. To use, launch TimeMain.exe. Set the time in the prompts, and the description. After you create it, a widget will appear to keep track of the time for you. To launch this program automatically on startup, type "Run" into your windows search bar, and enter shell:startup into the box. Create a shortcut for starter.exe and place it into the folder. Now your widgets will be created when you start up your computer! 
+
+TimeMain is used to create new entries, starter is the program that runs on boot, timeZoneList is the database file that stores all current time zones, and storeValues is the script that runs SQL to extract and query the timeZoneList database
