@@ -11,6 +11,7 @@ def fetchData():
     fullList=c.fetchall()
     return fullList
 
+#Used to create a new value in the table. In addition, if the table doesn't exist, it creates one
 def startSQL(title, adTime, time1):
     catString=f"{adTime}{time1}"
     c.execute('''SELECT count(name) FROM sqlite_master WHERE type='table' AND name='timeZoneList' ''')
