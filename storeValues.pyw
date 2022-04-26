@@ -4,6 +4,7 @@ import sqlite3
 connection = sqlite3.connect('timeZoneList.db')
 c = connection.cursor()
 
+#Getting all the data from the table and returning it in a list
 def fetchData():
     fullList=[]
     c.execute(f"SELECT * FROM timeZoneList")
