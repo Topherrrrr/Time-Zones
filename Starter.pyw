@@ -3,19 +3,30 @@ from datetime import datetime
 import storeValues
 import tkinter as tk
 
+#Creating a timeWidget class. This is the window that shows up when you create another timezone
 class timeWidget(object):
     def __init__(self, modifier, timeChanger, description, label, tkRoot):
+        
+        #How the other zone's time relates to yours. For example, if they are 2 hours behind (relatively speaking), this would be a '-'
         self.modifier=modifier
-        self.timeChanger=int(timeChanger)
-        self.description=description
-        self.label=label
         self.negative=False
+
+        #Converts the string input to an int. Using the previous example, this would change the string "2" to an int 2
+        self.timeChanger=int(timeChanger)
+        
+        #The description the user inputs into the time. Is displayed on the widget
+        self.description=description
+        
+        #The text component assigned on the object. We say "Label.text = x"
+        self.label=label
         self.tkRoot=tkRoot
 
+#List of widgets to appear on the screen
 widgetList=[]
 
 popup2 = tk.Tk()
 
+#Adding another time zone
 def addWidget(title, time1, adTime):
     popup2 = tk.Tk()
 
